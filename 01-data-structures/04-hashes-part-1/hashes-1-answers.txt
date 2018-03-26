@@ -1,0 +1,5 @@
+Doubling the size of the underlying array in the HashClass may be a poor idea,
+because this exponentially increases the size of the array when you get to a
+larger sized array. This could cause fragmentation between the hash items in the
+array, and will likely slow down the memory speed since doubling the size of an
+array is a slow operation.
