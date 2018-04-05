@@ -21,11 +21,22 @@ class SeparateChaining
     end
     @item_count += 1
     if load_factor >= @max_load_factor
-      # resize
+      resize
     end
   end
 
   def [](key)
+    i = index(key, size)
+    if !@items[i].nil?
+      current_node = @items[i].head
+      while current_node != nil
+        if current_node.key == key
+          return current_node.value
+        else
+          current_node = current_node.next
+        end
+      end
+    end
   end
 
   # Returns a unique, deterministically reproducible index into an array
@@ -37,7 +48,7 @@ class SeparateChaining
 
   # Calculate the current load factor
   def load_factor
-    @item_count / self.size.to_f
+    @item_count / size.to_f
   end
 
   # Simple method to return the number of items in the hash
@@ -48,9 +59,25 @@ class SeparateChaining
   # Resize the hash
   def resize
     temp = @items.compact
-    @items = Array.new(self.size * 2)
+    @items = Array.new(size * 2)
     temp.each do |item|
-      self[item.key] = item.value
+      current_node = item.head
+      node = Node.new(current_node.key, current_node.value)
+      i = index(item.head.key, size)
+      if @items[i].nil?
+        list = LinkedList.new
+        list.add_to_tail(node)
+        @items[i] = list
+        if load_factor >= @max_load_factor
+          self.resize
+        end
+      else
+        @items[i].add_to_tail(node)
+        if load_factor >= @max_load_factor
+          self.resize
+        end
+      end
+      current_node = current_node.next
     end
   end
 end
