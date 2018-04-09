@@ -10,14 +10,20 @@ class OpenAddressing
     i = index(key, size)
     if @items[i].nil?
       @items[i] = item
+    elsif @items[i].key == key && @items[i].value == value
+      return "This is a duplicate"
     else
+      # recheck this section (lines 15 - 23) need to tweak, add puts in between every
+      # single line to see where is going wrong. Also missing case for when item has similar
+      # but a different value && j == -1
       j = next_open_index(i)
       if j == -1
         resize
       end
-      @items[j] = item
+        @items[j] = item
+        @items[j].value = value
     end
-    print_state
+    # print_state
   end
 
   def [](key)
@@ -54,9 +60,14 @@ class OpenAddressing
   # Resize the hash
   def resize
     temp = @items.compact
-    @items = Array.new(self.size * 2)
+    new_array = Array.new(self.size * 2)
     temp.each do |item|
-      self[item.key] = item.value
+      # self[item.key] = item.value
+      node = Node.new(item.key, item.value)
+      i = index(item.key, size)
+      @items[i] = node
+      # create a new node (object with same value) for every item you want to add
+      # swap out items = new_array
     end
   end
 end

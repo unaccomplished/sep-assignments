@@ -89,6 +89,7 @@ def print_state
     if !item.nil?
       puts "Node: #{item}"
       # puts "Node: #{item}, Key: #{item.key}, Value: #{item.value}, Index: #{item.index(key,size)}"
+      # use head and next, print head, next node, using the .next method
     end
   end
 end
