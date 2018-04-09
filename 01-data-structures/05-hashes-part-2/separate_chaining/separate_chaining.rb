@@ -23,6 +23,7 @@ class SeparateChaining
     if load_factor >= @max_load_factor
       resize
     end
+    print_state
   end
 
   def [](key)
@@ -78,6 +79,16 @@ class SeparateChaining
         end
       end
       current_node = current_node.next
+    end
+  end
+end
+
+def print_state
+  puts "Hash Load Factor: #{load_factor}"
+  @items.each do |item|
+    if !item.nil?
+      puts "Node: #{item}"
+      # puts "Node: #{item}, Key: #{item.key}, Value: #{item.value}, Index: #{item.index(key,size)}"
     end
   end
 end
