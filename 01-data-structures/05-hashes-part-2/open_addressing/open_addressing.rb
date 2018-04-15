@@ -13,17 +13,24 @@ class OpenAddressing
     elsif @items[i].key == key && @items[i].value == value
       return "This is a duplicate"
     else
+      j = next_open_index(i)
+      if @items[i].key == key && @items[i].value != value && j == -1
+        resize
+        @items[j].value = value
       # recheck this section (lines 15 - 23) need to tweak, add puts in between every
       # single line to see where is going wrong. Also missing case for when item has similar
-      # but a different value && j == -1
-      j = next_open_index(i)
-      if j == -1
+      # but a different value && j ==
+      elsif j == -1
         resize
-      end
         @items[j] = item
         @items[j].value = value
+        p @items
+      else
+        @items[j] = item
+        @items[j].value = value
+      end
     end
-    # print_state
+    print_state
   end
 
   def [](key)

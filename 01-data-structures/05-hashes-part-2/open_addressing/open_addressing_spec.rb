@@ -49,11 +49,11 @@ RSpec.describe OpenAddressing, type: Class do
     it "sets the value of key to value" do
       expect(star_wars_movies["Star Wars: The Phantom Menace"]).to eq "Number One"
       expect(star_wars_movies["Star Wars: Attack of the Clones"]).to eq "Number Two"
-      p star_wars_movies
       expect(star_wars_movies["Star Wars: Revenge of the Sith"]).to eq "Number Three"
       expect(star_wars_movies["Star Wars: A New Hope"]).to eq "Number Four"
       expect(star_wars_movies["Star Wars: The Empire Strikes Back"]).to eq "Number Five"
       expect(star_wars_movies["Star Wars: Return of the Jedi"]).to eq "Number Six"
+      # p star_wars_movies
     end
   end
 
