@@ -24,13 +24,13 @@ class OpenAddressing
         resize
         @items[j] = item
         @items[j].value = value
-        p @items
+        # p @items
       else
         @items[j] = item
         @items[j].value = value
       end
     end
-    print_state
+    # print_state
   end
 
   def [](key)
@@ -66,16 +66,35 @@ class OpenAddressing
 
   # Resize the hash
   def resize
-    temp = @items.compact
-    new_array = Array.new(self.size * 2)
+    # original resize code that passes resize rspec tests
+    # temp = @items.compact
+    # @items = Array.new(self.size * 2)
+    # temp.each do |item|
+    #  self[item.key] = item.value
+    # end
+
+    #  resize code after mentor meeting, but causes rspec test errors for 41, 76, 83
+    # temp = @items.compact
+    # new_array = Array.new(self.size * 2)
+    # temp.each do |item|
+    #   node = Node.new(item.key, item.value)
+    #   i = index(item.key, size)
+    #   @items[i] = node
+    # end
+
+    # code working with Logan/Slack Support
+    temp = @items
+    @items = Array.new(temp.length * 2)
     temp.each do |item|
-      # self[item.key] = item.value
-      node = Node.new(item.key, item.value)
-      i = index(item.key, size)
-      @items[i] = node
+      unless item.nil?
+        node = Node.new(item.key, item.value)
+        i = index(item.key, size)
+        @items[i] = node
+      end
+    end
+
       # create a new node (object with same value) for every item you want to add
       # swap out items = new_array
-    end
   end
 end
 

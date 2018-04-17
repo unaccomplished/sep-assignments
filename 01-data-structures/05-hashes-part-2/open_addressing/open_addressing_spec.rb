@@ -40,9 +40,15 @@ RSpec.describe OpenAddressing, type: Class do
 
     it "resizes the array when a collision occurs and hash is full" do
       hash = OpenAddressing.new(1)
+      # What is the hash when it's new? Should be empty, right?
+      # p hash
       hash["key"] = "value"
+      # Does the hash contain "value" at "key"?
+      # p hash
       expect(hash.size).to eq 1
       hash["key"] = "second value"
+      # Does the hash contain "second value" at "key"? Is "value" still around?
+      # p hash
       expect(hash.size).to eq 2
     end
 

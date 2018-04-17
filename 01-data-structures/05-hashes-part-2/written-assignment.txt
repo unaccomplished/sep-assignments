@@ -1,0 +1,23 @@
+Three Collision Resolution Strategies Not Mentioned in Checkpoint
+
+1. Coalesced hashing: This is similar to separate chaining, and is a hybrid of
+chaining and open addressing. When a collision occurs, the item is placed in
+the first empty bucket in the table and a link is made between the chain and
+this "collision bucket."
+
+2. Hopscotch hashing: This is mix of cuckoo hashing and linear probing. When
+inserting a new entry, it attempts to add it to a neighboring bucket. If all
+buckets in the neighborhood are already occupied, linear probing is used to find
+the nearest open slot. Then a series of "hopping" occurs until that open slot
+is moved into the neighborhood and the entry is added.
+
+3. 2-choice hashing: This employs two different hash functions for the hash
+table. When an object is inserted into the table, it is placed into the location
+that contains fewer objects.
+
+My own collision resolution strategy: I would try an approach similar to
+2-choice hashing, but up it to four different hash functions so that the there
+are 4 different locations to add the hash to instead of two. If all locations
+are all full, then you would double the size of the four functions. I'm not
+sure if this would actually be a better strategy, but would be curious to see
+how it differs from the 2-choice hashing strategy.

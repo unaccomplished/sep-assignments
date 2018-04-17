@@ -87,7 +87,12 @@ def print_state
   puts "Hash Load Factor: #{load_factor}"
   @items.each do |item|
     if !item.nil?
-      puts "Node: #{item}"
+      current = item.head
+      while current != nil
+        puts "Node: #{current}, Key: #{current.key}, Value: #{current.value}"
+        current = current.next
+      end
+      # puts "Node: #{item}"
       # puts "Node: #{item}, Key: #{item.key}, Value: #{item.value}, Index: #{item.index(key,size)}"
       # use head and next, print head, next node, using the .next method
     end
