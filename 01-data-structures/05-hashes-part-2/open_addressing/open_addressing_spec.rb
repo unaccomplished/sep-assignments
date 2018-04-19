@@ -58,8 +58,8 @@ RSpec.describe OpenAddressing, type: Class do
       expect(star_wars_movies["Star Wars: Revenge of the Sith"]).to eq "Number Three"
       expect(star_wars_movies["Star Wars: A New Hope"]).to eq "Number Four"
       expect(star_wars_movies["Star Wars: The Empire Strikes Back"]).to eq "Number Five"
+      p star_wars_movies
       expect(star_wars_movies["Star Wars: Return of the Jedi"]).to eq "Number Six"
-      # p star_wars_movies
     end
   end
 

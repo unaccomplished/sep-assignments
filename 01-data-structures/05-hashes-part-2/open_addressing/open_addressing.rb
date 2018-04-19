@@ -6,9 +6,10 @@ class OpenAddressing
   end
 
   def []=(key, value)
-    item = Node.new(key, value)
+
     i = index(key, size)
     if @items[i].nil?
+      item = Node.new(key, value)
       @items[i] = item
     elsif @items[i].key == key && @items[i].value == value
       return "This is a duplicate"
@@ -16,21 +17,17 @@ class OpenAddressing
       j = next_open_index(i)
       if @items[i].key == key && @items[i].value != value && j == -1
         resize
-        @items[j].value = value
-      # recheck this section (lines 15 - 23) need to tweak, add puts in between every
-      # single line to see where is going wrong. Also missing case for when item has similar
-      # but a different value && j ==
+        self[key] = value
       elsif j == -1
         resize
-        @items[j] = item
-        @items[j].value = value
+        self[key] = value
         # p @items
       else
+        item = Node.new(key, value)
         @items[j] = item
-        @items[j].value = value
       end
     end
-    # print_state
+    print_state
   end
 
   def [](key)
@@ -66,25 +63,9 @@ class OpenAddressing
 
   # Resize the hash
   def resize
-    # original resize code that passes resize rspec tests
-    # temp = @items.compact
-    # @items = Array.new(self.size * 2)
-    # temp.each do |item|
-    #  self[item.key] = item.value
-    # end
-
-    #  resize code after mentor meeting, but causes rspec test errors for 41, 76, 83
-    # temp = @items.compact
-    # new_array = Array.new(self.size * 2)
-    # temp.each do |item|
-    #   node = Node.new(item.key, item.value)
-    #   i = index(item.key, size)
-    #   @items[i] = node
-    # end
-
     # code working with Logan/Slack Support
     temp = @items
-    @items = Array.new(temp.length * 2)
+    @items = Array.new(size * 2)
     temp.each do |item|
       unless item.nil?
         node = Node.new(item.key, item.value)
