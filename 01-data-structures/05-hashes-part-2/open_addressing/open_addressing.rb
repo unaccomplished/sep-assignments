@@ -7,38 +7,37 @@ class OpenAddressing
 
   def []=(key, value)
 
-    i = index(key, size)
-    if @items[i].nil?
-      item = Node.new(key, value)
-      @items[i] = item
+    i = index(key, size())
+    if @items[i] == nil
+      @items[i] = Node.new(key, value)
     elsif @items[i].key == key && @items[i].value == value
-      return "This is a duplicate"
+      return "duplicate"
+    elsif @items[i].key == key && @items[i].value != value
+      @items[i].value = value
     else
       j = next_open_index(i)
-      if @items[i].key == key && @items[i].value != value && j == -1
-        resize
+      if j == -1
+        resize()
         self[key] = value
-      elsif j == -1
-        resize
-        self[key] = value
-        # p @items
       else
-        item = Node.new(key, value)
-        @items[j] = item
+        @items[j] = Node.new(key, value)
       end
     end
     print_state
   end
 
   def [](key)
-    i = index(key, size)
-    if @items[i]
-      return @items[i].value
+    (0...size()).each do |i|
+      if @items[i] != nil
+        if @items[i].key == key
+          return @items[i].value
+        end
+      end
     end
   end
 
   # Returns a unique, deterministically reproducible index into an array
-  # We are hashing based on strings, let's use the ascii value of each string as
+  # We are itemsing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
     key.sum % size
@@ -56,26 +55,24 @@ class OpenAddressing
     end
   end
 
-  # Simple method to return the number of items in the hash
+  # Simple method to return the number of items in the items
   def size
     @items.length
   end
 
-  # Resize the hash
+  # Resize the items
   def resize
     # code working with Logan/Slack Support
-    temp = @items
-    @items = Array.new(size * 2)
-    temp.each do |item|
-      unless item.nil?
-        node = Node.new(item.key, item.value)
-        i = index(item.key, size)
-        @items[i] = node
+    temp = Array.new(@items.length * 2)
+    (0...@items.length).each do |el|
+      if @items[el]
+        new_index = @items[el].key.sum % temp.length
+        temp[new_index] = @items[el]
+        @items[el] = nil
       end
     end
-
-      # create a new node (object with same value) for every item you want to add
-      # swap out items = new_array
+    # assign the transfer array to our items array
+    @items = temp
   end
 end
 

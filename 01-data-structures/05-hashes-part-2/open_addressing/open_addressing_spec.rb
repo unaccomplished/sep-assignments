@@ -32,23 +32,17 @@ RSpec.describe OpenAddressing, type: Class do
   describe "#hash[key] = value" do
     it "does not resizes the array when a collision occurs and hash is not full" do
       hash = OpenAddressing.new(4)
-      hash["key"] = "value"
+      hash["key1"] = "value"
       expect(hash.size).to eq 4
-      hash["key"] = "second value"
+      hash["1key"] = "second value"
       expect(hash.size).to eq 4
     end
 
     it "resizes the array when a collision occurs and hash is full" do
       hash = OpenAddressing.new(1)
-      # What is the hash when it's new? Should be empty, right?
-      # p hash
-      hash["key"] = "value"
-      # Does the hash contain "value" at "key"?
-      # p hash
+      hash["key1"] = "value"
       expect(hash.size).to eq 1
-      hash["key"] = "second value"
-      # Does the hash contain "second value" at "key"? Is "value" still around?
-      # p hash
+      hash["1key"] = "second value"
       expect(hash.size).to eq 2
     end
 
@@ -58,7 +52,6 @@ RSpec.describe OpenAddressing, type: Class do
       expect(star_wars_movies["Star Wars: Revenge of the Sith"]).to eq "Number Three"
       expect(star_wars_movies["Star Wars: A New Hope"]).to eq "Number Four"
       expect(star_wars_movies["Star Wars: The Empire Strikes Back"]).to eq "Number Five"
-      p star_wars_movies
       expect(star_wars_movies["Star Wars: Return of the Jedi"]).to eq "Number Six"
     end
   end
