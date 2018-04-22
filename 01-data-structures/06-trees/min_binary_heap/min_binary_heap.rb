@@ -9,71 +9,75 @@ class MinBinaryHeap
   # uses depth first search to find the appropriate place to add the data and
   # adds it as a new Leaf
   def insert(root, node)
-
-
-    # if root.nil?
-    #   root = node
-    # elsif node.rating < root.rating
-    #   if root.left.nil?
-    #     root.left = node
-    #   else
-    #     insert(root.left, node)
-    #   end
-    # elsif node.rating > root.rating
-    #   if root.right.nil?
-    #     root.right = node
-    #   else
-    #     insert(root.right, node)
-    #   end
-    # end
+    if root.left.nil?
+      root.left = node
+      if root.rating > node.rating
+        swap(root, node)
+      end
+    elsif root.right.nil? && root.left != nil
+      root.right = node
+      if root.rating > node.rating
+        swap(root, node)
+      end
+    elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
+      insert(root.right, node)
+    elsif root.left != nil && root.right != nil
+      insert(root.left, node)
+    end
   end
+
+def swap(root, node)
+  temp = root
+  root = node
+  node = temp
+end
 
   # Recursive Depth First Search: returns a Node object which contains the data,
   # if found.
   def find(root, data)
-    # if data.nil?
-    #   return nil
-    # else
-    #   if root.title == data
-    #     return root
-    #   elsif root.left
-    #     find(root.left, data)
-    #   elsif root.right
-    #     find(root.right, data)
-    #   end
-    # end
+    if data.nil?
+      return nil
+    else
+      if root.title == data
+        return root
+      elsif root.left
+        find(root.left, data)
+      elsif root.right
+        find(root.right, data)
+      end
+    end
   end
 
   # this function removes the Node which contains the given data without losing
   # any other Nodes in the Tree. The Tree must remain a Binary Search Tree after
   # each deletion.
   def delete(root, data)
-    # to_delete = find(root, data)
-    # if to_delete.nil?
-    #   return nil
-    # else
-    #   to_delete.title = nil
-    #   to_delete.rating = nil
-    # end
+    to_delete = find(root, data)
+    if to_delete.nil?
+      return nil
+    else
+      to_delete.title = nil
+      to_delete.rating = nil
+    end
   end
 
   # Recursive Breadth First Search: this function prints each node's data of the
   # tree on a single line from top to bottom.
   def printf(children=nil)
-  #   children_array = [@root]
-  #   children_array.each do |child|
-  #     if child.left
-  #       children_array << child.left
-  #     end
-  #     if child.right
-  #       children_array << child.right
-  #     end
-  #   end
-  #
-  #   children_array.each do |child|
-  #     puts "#{child.title}: #{child.rating}"
-  #   end
-  # end
+    children_array = [@root]
+    children_array.each do |child|
+      if child.left
+        children_array << child.left
+      end
+      if child.right
+        children_array << child.right
+      end
+    end
+
+    children_array.each do |child|
+      puts "#{child.title}: #{child.rating}"
+    end
+  end
 end
 
 adaptation = Node.new("Adaptation", 91)
