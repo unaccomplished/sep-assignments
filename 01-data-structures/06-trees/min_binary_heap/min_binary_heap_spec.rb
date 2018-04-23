@@ -90,7 +90,7 @@ RSpec.describe MinBinaryHeap, type: Class do
 
     it "properly finds a left node" do
       tree.insert(root, pacific_rim)
-      expect(tree.find(root, matrix.title).title).to eq "The Matrix"
+      expect(tree.find(root, root.title).title).to eq "The Matrix"
     end
 
     it "properly finds a right node" do
@@ -141,8 +141,8 @@ RSpec.describe MinBinaryHeap, type: Class do
 
     it "properly deletes a root node" do
       tree.insert(root, hope)
-      tree.delete(root, matrix.title)
-      expect(tree.find(root, matrix.title)).to be_nil
+      tree.delete(root, root.title)
+      expect(tree.find(root, root.title)).to be_nil
     end
 
     it "properly deletes a left node" do

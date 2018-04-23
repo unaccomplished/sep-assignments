@@ -1,0 +1,16 @@
+1. Printout of Binary Search Tree:
+Adaptation: 91
+Legends of the Fall: 56
+Gone With The Wind: 92
+The Fifth Element: 72
+Schindler's List: 97
+Love Actually: 63
+V for Vendetta: 73
+The Apartment: 93
+Leon: 71
+Mother: 90
+Pride and Prejudice: 85
+Dirty Rotten Scoundrels: 88
+Black Swan: 86
+
+Printout of Min Binary Heap:
