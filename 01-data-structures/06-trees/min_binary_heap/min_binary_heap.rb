@@ -104,6 +104,10 @@ class MinBinaryHeap
 
         p root
         p node
+
+        if root.parent.nil?
+          @root = root
+        end
         puts ""
         printf
         puts ""
@@ -174,6 +178,7 @@ class MinBinaryHeap
 
     children_array.each do |child|
       puts "#{child.title}: #{child.rating}"
+      # puts "Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
     end
   end
 end

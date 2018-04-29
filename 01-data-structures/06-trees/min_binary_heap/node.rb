@@ -10,5 +10,6 @@ class Node
     @rating = rating
     @left = nil
     @right = nil
+    @parent = nil
   end
 end
