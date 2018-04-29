@@ -9,22 +9,40 @@ class MinBinaryHeap
   # uses depth first search to find the appropriate place to add the data and
   # adds it as a new Leaf
   def insert(root, node)
-    if root.rating > node.rating
-      # p root
-      # p node
-      temp = root
-      @root = node
-      node = temp
-      insert(@root, node)
+    # if root.rating > node.rating
+    #   p root
+    #   p node
+    #   newLeftNode = root.left
+    #   newRightNode = root.right
+    #   temp = root
+    #   @root = node
+    #   node.left = newLeftNode
+    #   node.right = newRightNode
+    #   node = temp
+    #   p root
+    #   p node
+    #   insert(@root, node)
       # puts "Swapped those two elements in root.left is nil"
       # p root
       # p node
     # end
-    else
+    # else
+    p root
+    p node
       if root.left.nil?
         root.left = node
+        puts "root.left is nil"
+        if root.rating > node.rating
+          swap(@root, node)
+          puts "root is rated higher, swapped node and root"
+        end
       elsif root.right.nil? && root.left != nil
         root.right = node
+        puts "root.left is not nil, but root.right is "
+        if root.rating > node.rating
+          swap(@root, node)
+          puts "root is rated higher, swapped node and root"
+        end
       # if root.rating > node.rating
       #   # p root
       #   # p node
@@ -38,13 +56,21 @@ class MinBinaryHeap
       elsif root.left != nil && root.right != nil
         insert(root.left, node)
       end
-    end
+    # end
   end
 
-def swap(root, node)
-  temp = root
-  root = node
-  node = temp
+def swap(node1, node2)
+  p node1
+  p node2
+  newLeftNode = node1.left
+  newRightNode = node1.right
+  temp = node1
+  node1 = node2
+  node2 = temp
+  node2.left = newLeftNode
+  node2.right = newRightNode
+  p node1
+  p node2
 end
 
   # Recursive Depth First Search: returns a Node object which contains the data,
