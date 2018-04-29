@@ -9,24 +9,6 @@ class MinBinaryHeap
   # uses depth first search to find the appropriate place to add the data and
   # adds it as a new Leaf
   def insert(root, node)
-    # if root.rating > node.rating
-    #   p root
-    #   p node
-    #   newLeftNode = root.left
-    #   newRightNode = root.right
-    #   temp = root
-    #   @root = node
-    #   node.left = newLeftNode
-    #   node.right = newRightNode
-    #   node = temp
-    #   p root
-    #   p node
-    #   insert(@root, node)
-      # puts "Swapped those two elements in root.left is nil"
-      # p root
-      # p node
-    # end
-    # else
     puts ""
     puts "Inserting " + node.title + "..."
     puts ""
@@ -54,85 +36,138 @@ class MinBinaryHeap
       # 2. Compare the value of the new child node with its parent.
       if node.rating < root.rating
         puts "new node is less than root, swapping!"
-        # 3. If the value of the parent node is less than child, then swap the
-        # parent node with the child node.
+        swap(root, node)
+        # # 3. If the value of the parent node is less than child, then swap the
+        # # parent node with the child node.
+        #
+        # # The root is connected to:
+        # #     The root's parent
+        # #     root.left
+        # #     root.right
+        # root_parent = root.parent
+        # root_left = root.left
+        # root_right = root.right
+        #
+        # # The child node is connected to:
+        # #     The root node
+        # #     child.left
+        # #     child.right
+        # node_left = node.left
+        # node_right = node.right
+        #
+        # if !root_parent.nil?
+        #   if root_parent.left == root
+        #     root_parent.left = node
+        #   else
+        #     root_parent.right = node
+        #   end
+        # end
+        #
+        # if root_left == node
+        #   node.left = root
+        # else
+        #   node.left = root_left
+        # end
+        #
+        # if root_right == node
+        #   node.right = root
+        # else
+        #   node.right = root_right
+        # end
+        #
+        # node.right = root_right
+        # node.parent = root_parent
+        #
+        # root.left = node_left
+        # root.right = node_right
+        # root.parent = node
+        #
+        # node = root
+        # root = root.parent
+        #
+        # p root
+        # p node
+        #
+        # if root.parent.nil?
+        #   @root = root
+        # end
+        # puts ""
+        # printf
+        # puts ""
 
-        # The root is connected to:
-        #     The root's parent
-        #     root.left
-        #     root.right
-        root_parent = root.parent
-        root_left = root.left
-        root_right = root.right
-
-        # The child node is connected to:
-        #     The root node
-        #     child.left
-        #     child.right
-        node_left = node.left
-        node_right = node.right
-
-        if !root_parent.nil?
-          if root_parent.left == root
-            root_parent.left = node
-          else
-            root_parent.right = node
-          end
-        end
-
-        if root_left == node
-          node.left = root
-        else
-          node.left = root_left
-        end
-
-        if root_right == node
-          node.right = root
-        else
-          node.right = root_right
-        end
-
-        node.right = root_right
-        node.parent = root_parent
-
-        root.left = node_left
-        root.right = node_right
-        root.parent = node
-
-        node = root
-        root = root.parent
-
-        p root
-        p node
-
-        if root.parent.nil?
-          @root = root
-        end
-        puts ""
-        printf
-        puts ""
+        # if root.parent.rating > root.rating
+        #   swap(root.parent, root)
+        # end
       end
       # 4. Repeat step 2 and 3 until the Heap property holds.
       puts "Finished inserting."
       puts ""
   end
 
-# def swap(node1, node2)
-#   puts ""
-#   p node1
-#   p node2
-#   newLeftNode = node1.left
-#   newRightNode = node1.right
-#   temp = node1
-#   node1 = node2
-#   p "Performed swap!"
-#   node2 = temp
-#   node2.left = newLeftNode
-#   node2.right = newRightNode
-#   p node1
-#   p node2
-#   puts ""
-# end
+  def swap(root, node)
+    # 3. If the value of the parent node is less than child, then swap the
+    # parent node with the child node.
+
+    # The root is connected to:
+    #     The root's parent
+    #     root.left
+    #     root.right
+    root_parent = root.parent
+    root_left = root.left
+    root_right = root.right
+
+    # The child node is connected to:
+    #     The root node
+    #     child.left
+    #     child.right
+    node_left = node.left
+    node_right = node.right
+
+    if !root_parent.nil?
+      if root_parent.left == root
+        root_parent.left = node
+      else
+        root_parent.right = node
+      end
+    end
+
+    if root_left == node
+      node.left = root
+    else
+      node.left = root_left
+    end
+
+    if root_right == node
+      node.right = root
+    else
+      node.right = root_right
+    end
+
+    node.right = root_right
+    node.parent = root_parent
+
+    root.left = node_left
+    root.right = node_right
+    root.parent = node
+
+    node = root
+    root = root.parent
+
+    p root
+    p node
+
+
+    if root.parent.nil?
+      @root = root
+    elsif root.parent.rating > root.rating
+      swap(root.parent, root)
+    end
+
+    puts ""
+    printf
+    puts ""
+
+  end
 
   # Recursive Depth First Search: returns a Node object which contains the data,
   # if found.
@@ -178,7 +213,7 @@ class MinBinaryHeap
 
     children_array.each do |child|
       puts "#{child.title}: #{child.rating}"
-      # puts "Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
+      puts "Node: #{child}, Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
     end
   end
 end
@@ -211,5 +246,5 @@ end
 # minBinaryHeap.insert(adaptation, pride_and_prejudice)
 # minBinaryHeap.insert(adaptation, dirty_rotten_scoundrels)
 # minBinaryHeap.insert(adaptation, black_swan)
-
+#
 # minBinaryHeap.printf
