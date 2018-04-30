@@ -29,10 +29,11 @@ RSpec.describe MinBinaryHeap, type: Class do
       expect(tree.root.left.title).to eq "The Matrix"
     end
 
+# This error never gets to the test, it gest stuck in the printout
     # it "properly inserts a new node as a left child" do
     #   tree.insert(tree.root, braveheart)
-    #   puts tree.inspect
-    #   puts "@@@@@@@"
+    #   # puts tree.inspect
+    #   # puts "@@@@@@@"
     #   tree.insert(tree.root, pacific_rim)
     #   expect(root.left.title).to eq "The Matrix"
     # end
@@ -50,13 +51,14 @@ RSpec.describe MinBinaryHeap, type: Class do
       expect(tree.root.left.left.title).to eq "The Martian"
     end
 
-    # it "properly inserts a new node as a left-right child" do
-    #   tree.insert(tree.root, district)
-    #   tree.insert(tree.root, shawshank)
-    #   tree.insert(tree.root, martian)
-    #   tree.insert(tree.root, hope)
-    #   expect(tree.root.left.left.title).to eq "Star Wars: A New Hope"
-    # end
+# This gives an error of wrong node
+    it "properly inserts a new node as a left-right child" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      expect(tree.root.left.left.title).to eq "Star Wars: A New Hope"
+    end
 
     it "properly inserts a new node as a right-left child" do
       tree.insert(tree.root, district)
@@ -95,6 +97,7 @@ RSpec.describe MinBinaryHeap, type: Class do
       expect(tree.find(tree.root, root.title).title).to eq "The Matrix"
     end
 
+# This error never gets to the test, it gest stuck in the printout
     # it "properly finds a right node" do
     #   tree.insert(tree.root, braveheart)
     #   tree.insert(tree.root, pacific_rim)
@@ -108,32 +111,35 @@ RSpec.describe MinBinaryHeap, type: Class do
       expect(tree.find(tree.root, martian.title).title).to eq "The Martian"
     end
 
-    # it "properly finds a left-right node" do
-    #   tree.insert(tree.root, district)
-    #   tree.insert(tree.root, shawshank)
-    #   tree.insert(tree.root, martian)
-    #   tree.insert(tree.root, hope)
-    #   expect(tree.find(tree.root, hope.title).title).to eq "Star Wars: A New Hope"
-    # end
+# this gives an error of undefined method `title`
+    it "properly finds a left-right node" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      expect(tree.find(tree.root, hope.title).title).to eq "Star Wars: A New Hope"
+    end
 
-    # it "properly finds a right-left node" do
-    #   tree.insert(tree.root, district)
-    #   tree.insert(tree.root, shawshank)
-    #   tree.insert(tree.root, martian)
-    #   tree.insert(tree.root, hope)
-    #   tree.insert(tree.root, empire)
-    #   expect(tree.find(tree.root, empire.title).title).to eq "Star Wars: The Empire Strikes Back"
-    # end
+# this gives an error of undefined method `title`
+    it "properly finds a right-left node" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      tree.insert(tree.root, empire)
+      expect(tree.find(tree.root, empire.title).title).to eq "Star Wars: The Empire Strikes Back"
+    end
 
-    # it "properly finds a right-right node" do
-    #   tree.insert(tree.root, district)
-    #   tree.insert(tree.root, shawshank)
-    #   tree.insert(tree.root, martian)
-    #   tree.insert(tree.root, hope)
-    #   tree.insert(tree.root, empire)
-    #   tree.insert(tree.root, mad_max_2)
-    #   expect(tree.find(tree.root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
-    # end
+# this gives an error of undefined method `title`
+    it "properly finds a right-right node" do
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
+      tree.insert(tree.root, martian)
+      tree.insert(tree.root, hope)
+      tree.insert(tree.root, empire)
+      tree.insert(tree.root, mad_max_2)
+      expect(tree.find(tree.root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
+    end
   end
 
   describe "#delete(data)" do
@@ -200,6 +206,7 @@ RSpec.describe MinBinaryHeap, type: Class do
   end
 
   describe "#printf" do
+    # This error never gets to the test, it gest stuck in the printout
      # specify {
      #   expected_output = "Pacific Rim: 72\nThe Matrix: 87\nBraveheart: 78\n"
      #   tree.insert(root, braveheart)
