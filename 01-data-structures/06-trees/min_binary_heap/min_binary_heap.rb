@@ -2,6 +2,8 @@ require_relative 'node'
 
 class MinBinaryHeap
 
+  attr_reader :root
+
   def initialize(root)
     @root = root
   end
@@ -213,7 +215,7 @@ class MinBinaryHeap
 
     children_array.each do |child|
       puts "#{child.title}: #{child.rating}"
-      puts "Node: #{child}, Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
+      # puts "Node: #{child}, Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
     end
   end
 end
