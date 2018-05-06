@@ -39,67 +39,6 @@ class MinBinaryHeap
       if node.rating < root.rating
         puts "new node is less than root, swapping!"
         swap(root, node)
-        # # 3. If the value of the parent node is less than child, then swap the
-        # # parent node with the child node.
-        #
-        # # The root is connected to:
-        # #     The root's parent
-        # #     root.left
-        # #     root.right
-        # root_parent = root.parent
-        # root_left = root.left
-        # root_right = root.right
-        #
-        # # The child node is connected to:
-        # #     The root node
-        # #     child.left
-        # #     child.right
-        # node_left = node.left
-        # node_right = node.right
-        #
-        # if !root_parent.nil?
-        #   if root_parent.left == root
-        #     root_parent.left = node
-        #   else
-        #     root_parent.right = node
-        #   end
-        # end
-        #
-        # if root_left == node
-        #   node.left = root
-        # else
-        #   node.left = root_left
-        # end
-        #
-        # if root_right == node
-        #   node.right = root
-        # else
-        #   node.right = root_right
-        # end
-        #
-        # node.right = root_right
-        # node.parent = root_parent
-        #
-        # root.left = node_left
-        # root.right = node_right
-        # root.parent = node
-        #
-        # node = root
-        # root = root.parent
-        #
-        # p root
-        # p node
-        #
-        # if root.parent.nil?
-        #   @root = root
-        # end
-        # puts ""
-        # printf
-        # puts ""
-
-        # if root.parent.rating > root.rating
-        #   swap(root.parent, root)
-        # end
       end
       # 4. Repeat step 2 and 3 until the Heap property holds.
       puts "Finished inserting."
@@ -107,68 +46,21 @@ class MinBinaryHeap
   end
 
   def swap(root, node)
-    # 3. If the value of the parent node is less than child, then swap the
-    # parent node with the child node.
-
-    # The root is connected to:
-    #     The root's parent
-    #     root.left
-    #     root.right
-    root_parent = root.parent
-    root_left = root.left
-    root_right = root.right
-
-    # The child node is connected to:
-    #     The root node
-    #     child.left
-    #     child.right
-    node_left = node.left
-    node_right = node.right
-
-    if !root_parent.nil?
-      if root_parent.left == root
-        root_parent.left = node
-      else
-        root_parent.right = node
-      end
+    temp_node = Node.new(root.title, root.rating)
+    temp_node.left = node.left
+    temp_node.right = node.right
+    if root == @root
+      @root = node
     end
-
-    if root_left == node
+    if root.left.title == node.title
       node.left = root
+      node.right = root.right
     else
-      node.left = root_left
-    end
-
-    if root_right == node
       node.right = root
-    else
-      node.right = root_right
+      node.left = root.left
     end
-
-    node.right = root_right
-    node.parent = root_parent
-
-    root.left = node_left
-    root.right = node_right
-    root.parent = node
-
-    node = root
-    root = root.parent
-
-    p root
-    p node
-
-
-    if root.parent.nil?
-      @root = root
-    elsif root.parent.rating > root.rating
-      swap(root.parent, root)
-    end
-
-    puts ""
-    printf
-    puts ""
-
+    root.left = temp_node.left
+    root.right = temp_node.right
   end
 
   # Recursive Depth First Search: returns a Node object which contains the data,
@@ -176,15 +68,16 @@ class MinBinaryHeap
   def find(root, data)
     if data.nil? || root.nil?
       return nil
+    end
+    if root.title == data
+      return root
     else
-      if root.title == data
-        return root
-      elsif root.left != nil
-        find(root.left, data)
-      elsif root.right != nil
-        find(root.right, data)
+      node = find(root.left, data)
+      if node.nil?
+        node = find(root.right, data)
       end
     end
+    return node
   end
 
   # this function removes the Node which contains the given data without losing
@@ -214,7 +107,9 @@ class MinBinaryHeap
     end
 
     children_array.each do |child|
+
       puts "#{child.title}: #{child.rating}"
+      # Uncomment below for troubleshooting to see node's parent/left/right
       # puts "Node: #{child}, Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
     end
   end
