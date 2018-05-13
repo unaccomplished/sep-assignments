@@ -14,3 +14,14 @@ Dirty Rotten Scoundrels: 88
 Black Swan: 86
 
 Printout of Min Binary Heap:
+Legends of the Fall: 56
+The Fifth Element: 72
+Love Actually: 63
+Adaptation: 91
+Schindler's List: 97
+Gone With The Wind: 92
+Leon: 71
+Pride and Prejudice: 85
+Black Swan: 86
+Dirty Rotten Scoundrels: 88
+Gone With The Wind: 92
