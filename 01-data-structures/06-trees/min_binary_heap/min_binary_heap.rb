@@ -34,7 +34,7 @@ class MinBinaryHeap
         insert(root.left, node)
       end
       puts ""
-      printf
+      # printf
       puts ""
       # 2. Compare the value of the new child node with its parent.
       if node.rating < root.rating
@@ -42,8 +42,8 @@ class MinBinaryHeap
         swap(root, node)
       end
       # 4. Repeat step 2 and 3 until the Heap property holds.
-      # puts "Finished inserting."
-      # puts ""
+      puts "Finished inserting."
+      puts ""
   end
 
   # def swap(root, node)
@@ -128,6 +128,7 @@ class MinBinaryHeap
     if root.parent.nil?
       @root = root
     elsif root.parent.rating > root.rating
+      puts "swap function: root.parent.rating: " + root.parent.title + " is greater than root: " + root.title + ", swapping!"
       swap(root.parent, root)
     end
     #
@@ -221,21 +222,21 @@ minBinaryHeap.insert(minBinaryHeap.root, love_actually)
 
 minBinaryHeap.printf
 
-adaptation = Node.new("Adaptation", 5)
-legends_of_the_fall = Node.new("Legends of the Fall", 10)
-gone_with_the_wind = Node.new("Gone With The Wind", 15)
-fifth_element = Node.new("The Fifth Element", 25)
-schindlers_list = Node.new("Schindler's List", 30)
-v_for_vendetta = Node.new("V for Vendetta", 73)
-apartment = Node.new("The Apartment", 93)
-mother = Node.new("Mother", 90)
-love_actually = Node.new("Love Actually", 63)
-leon = Node.new("Leon", 71)
-pride_and_prejudice = Node.new("Pride and Prejudice", 85)
-dirty_rotten_scoundrels = Node.new("Dirty Rotten Scoundrels", 88)
-black_swan = Node.new("Black Swan", 86)
-
-minBinaryHeap = MinBinaryHeap.new(adaptation)
+# adaptation = Node.new("Adaptation", 5)
+# legends_of_the_fall = Node.new("Legends of the Fall", 10)
+# gone_with_the_wind = Node.new("Gone With The Wind", 15)
+# fifth_element = Node.new("The Fifth Element", 25)
+# schindlers_list = Node.new("Schindler's List", 30)
+# v_for_vendetta = Node.new("V for Vendetta", 73)
+# apartment = Node.new("The Apartment", 93)
+# mother = Node.new("Mother", 90)
+# love_actually = Node.new("Love Actually", 63)
+# leon = Node.new("Leon", 71)
+# pride_and_prejudice = Node.new("Pride and Prejudice", 85)
+# dirty_rotten_scoundrels = Node.new("Dirty Rotten Scoundrels", 88)
+# black_swan = Node.new("Black Swan", 86)
+#
+# minBinaryHeap = MinBinaryHeap.new(adaptation)
 #
 # minBinaryHeap.insert(minBinaryHeap.root, legends_of_the_fall)
 # minBinaryHeap.insert(minBinaryHeap.root, gone_with_the_wind)

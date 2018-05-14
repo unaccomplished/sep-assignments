@@ -199,22 +199,22 @@ RSpec.describe MinBinaryHeap, type: Class do
 #   end
 #
 #   describe "#printf" do
-#      specify {
-#        expected_output = "Pacific Rim: 72\nThe Matrix: 87\nBraveheart: 78\n"
-#        tree.insert(root, braveheart)
-#        tree.insert(tree.root, pacific_rim)
-#        expect { tree.printf }.to output(expected_output).to_stdout
-#      }
-#
-#      specify {
-#        expected_output = "The Matrix: 87\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
-#        tree.insert(tree.root, district)
-#        tree.insert(tree.root, shawshank)
-#        tree.insert(tree.root, martian)
-#        tree.insert(tree.root, hope)
-#        tree.insert(tree.root, empire)
-#        tree.insert(tree.root, mad_max_2)
-#        expect { tree.printf }.to output(expected_output).to_stdout
-#      }
+#      # specify {
+#      #   expected_output = "Pacific Rim: 72\nThe Matrix: 87\nBraveheart: 78\n"
+#      #   tree.insert(root, braveheart)
+#      #   tree.insert(tree.root, pacific_rim)
+#      #   expect { tree.printf }.to output(expected_output).to_stdout
+#      # }
+#      #
+#      # specify {
+#      #   expected_output = "The Matrix: 87\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
+#      #   tree.insert(tree.root, district)
+#      #   tree.insert(tree.root, shawshank)
+#      #   tree.insert(tree.root, martian)
+#      #   tree.insert(tree.root, hope)
+#      #   tree.insert(tree.root, empire)
+#      #   tree.insert(tree.root, mad_max_2)
+#      #   expect { tree.printf }.to output(expected_output).to_stdout
+#      # }
 #   end
 end
