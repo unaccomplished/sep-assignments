@@ -14,26 +14,25 @@ Dirty Rotten Scoundrels: 88
 Black Swan: 86
 
 Printout of Min Binary Heap:
-Currently missing some nodes due to extra swapping bug
 Legends of the Fall: 56
-The Fifth Element: 72
 Love Actually: 63
+V for Vendetta: 73
 Adaptation: 91
-Schindler's List: 97
-Gone With The Wind: 92
 Leon: 71
-Pride and Prejudice: 85
+Gone with the Wind: 92
 Black Swan: 86
+Pride and Prejudice: 85
+The Apartment: 93
 Dirty Rotten Scoundrels: 88
-Gone With The Wind: 92
+Adaptation: 91
 
 2. Benchmark to compare performance between Binary Search Tree and Min Binary Heap
                                         user     system      total        real
-insert numbers 1 to 10000 into tree:  17.100000   0.020000  17.120000 ( 17.129529)
-insert numbers 1 to 10000 into heap:   0.030000   0.000000   0.030000 (  0.024792)
-find 5000th element in tree:           0.000000   0.000000   0.000000 (  0.001131)
+insert numbers 1 to 10000 into tree:  16.950000   0.020000  16.970000 ( 16.975384)
+insert numbers 1 to 10000 into heap:   0.030000   0.000000   0.030000 (  0.030190)
+find 5000th element in tree:           0.000000   0.000000   0.000000 (  0.001075)
 find 5000th element in heap:           0.000000   0.000000   0.000000 (  0.000010)
-remove 5000th element in tree:         0.000000   0.000000   0.000000 (  0.001059)
+remove 5000th element in tree:         0.000000   0.000000   0.000000 (  0.001063)
 remove 5000th element in heap:         0.000000   0.000000   0.000000 (  0.000009)
 
 - Comparing the average insertion time for Binary Search Tree versus Min Binary
@@ -53,4 +52,4 @@ of the tree.
 - I would use Min Binary Heap for prioritizing elements because heaps keep
 information organized and fills in nodes from left to right on each level of the
 tree before moving to the next level. This keeps the elements more organized
-and more efficient in searching/deleting. 
+and more efficient in searching/deleting.

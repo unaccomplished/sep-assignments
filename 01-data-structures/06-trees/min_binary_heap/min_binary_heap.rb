@@ -13,53 +13,56 @@ class MinBinaryHeap
   # uses depth first search to find the appropriate place to add the data and
   # adds it as a new Leaf
   def insert(root, node)
-    puts ""
-    puts "Inserting " + node.title + "..." + "root is " + root.title
-    puts ""
+    # puts ""
+    # puts "Inserting " + node.title + "..." + "root is " + root.title
+    # puts ""
     # p root
     # p node
     # 1. Insert a new node at the end of the Heap
 
-    @heapsize += 1
-    current_level = (Math.log2(@heapsize).floor)
+    size = @heapsize + 1
+    current_level = (Math.log2(size).floor)
     level_capacity = 2 ** current_level
     level_midway = level_capacity / 2
     tree_capacity = 2 ** (current_level + 1) - 1
-    level_position = level_capacity - (tree_capacity - @heapsize)
-    puts @heapsize
-    puts current_level
-    puts level_capacity
-    puts level_midway
-    puts tree_capacity
-    puts level_position
+    level_position = level_capacity - (tree_capacity - size)
+    # puts "heapsize: #{@heapsize}"
+    # puts "size: #{size}"
+    # puts "current_level: #{current_level}"
+    # puts "level_capacity: #{level_capacity}"
+    # puts "level_midway: #{level_midway}"
+    # puts "tree_capacity: #{tree_capacity}"
+    # puts "level_position: #{level_position}"
 
       if root.left.nil?
-        puts "left of root is nil, inserting node there"
+        # puts "left of root is nil, inserting node there"
         root.left = node
         node.parent = root
+        @heapsize += 1
       elsif root.right.nil? && root.left != nil
-        puts "right of root is nil, but left of root is not nil, inserting node to root.right"
+        # puts "right of root is nil, but left of root is not nil, inserting node to root.right"
         root.right = node
         node.parent = root
-      elsif level_position > level_midway
-        puts "level position is larger than level midway, inserting node in root.right"
-        insert(root.right, node)
+        @heapsize += 1
       elsif level_position <= level_midway
-        puts "level position is lesser or equal to level midway, inserting node in root.left"
+        # puts "level position is lesser or equal to level midway, inserting node in root.left"
         insert(root.left, node)
+      elsif level_position > level_midway
+        # puts "level position is larger than level midway, inserting node in root.right"
+        insert(root.right, node)
       end
-      puts ""
-      printf
-      puts ""
+      # puts ""
+      # printf
+      # puts ""
       # 2. Compare the value of the new child node with its parent.
       if node.rating < root.rating
-        puts "new node: " + node.title + " is less than root: " + root.title + ", swapping!"
+        # puts "new node: " + node.title + " is less than root: " + root.title + ", swapping!"
         swap(root, node)
       end
       # 4. Repeat step 2 and 3 until the Heap property holds.
-      puts "Finished inserting."
-      printf
-      puts ""
+      # puts "Finished inserting."
+      # printf
+      # puts ""
   end
 
   def swap(root, node)
@@ -108,7 +111,7 @@ class MinBinaryHeap
     if root.parent.nil?
       @root = root
     elsif root.parent.rating > root.rating
-      puts "swap function: root.parent.rating: " + root.parent.title + " is greater than root: " + root.title + ", swapping!"
+      # puts "swap function: root.parent.rating: " + root.parent.title + " is greater than root: " + root.title + ", swapping!"
       swap(root.parent, root)
     end
     #
@@ -166,15 +169,15 @@ class MinBinaryHeap
 
       puts "#{child.title}: #{child.rating}"
       # Uncomment below for troubleshooting to see node's parent/left/right
-      puts "Node: #{child}, Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
+      # puts "Node: #{child}, Left Node: #{child.left}, Right Node: #{child.right}, Parent Node: #{child.parent}"
     end
   end
 end
 
 adaptation = Node.new("Adaptation", 91)
 legends_of_the_fall = Node.new("Legends of the Fall", 56)
-gone_with_the_wind = Node.new("Gone With The Wind", 92)
-fifth_element = Node.new("The Fifth Element", 72)
+gone_with_the_wind = Node.new("Gone with the Wind", 92)
+fifth_element = Node.new("Fifth Element", 72)
 schindlers_list = Node.new("Schindler's List", 97)
 v_for_vendetta = Node.new("V for Vendetta", 73)
 apartment = Node.new("The Apartment", 93)
@@ -195,10 +198,10 @@ minBinaryHeap.insert(minBinaryHeap.root, v_for_vendetta)
 minBinaryHeap.insert(minBinaryHeap.root, apartment)
 minBinaryHeap.insert(minBinaryHeap.root, mother)
 minBinaryHeap.insert(minBinaryHeap.root, love_actually)
-# minBinaryHeap.insert(minBinaryHeap.root, leon)
-# minBinaryHeap.insert(minBinaryHeap.root, pride_and_prejudice)
-# minBinaryHeap.insert(minBinaryHeap.root, dirty_rotten_scoundrels)
-# minBinaryHeap.insert(minBinaryHeap.root, black_swan)
+minBinaryHeap.insert(minBinaryHeap.root, leon)
+minBinaryHeap.insert(minBinaryHeap.root, pride_and_prejudice)
+minBinaryHeap.insert(minBinaryHeap.root, dirty_rotten_scoundrels)
+minBinaryHeap.insert(minBinaryHeap.root, black_swan)
 
 minBinaryHeap.printf
 
