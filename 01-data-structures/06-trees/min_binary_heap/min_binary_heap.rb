@@ -6,6 +6,7 @@ class MinBinaryHeap
 
   def initialize(root)
     @root = root
+    @heapsize = 1
     # @items = Array.new(size)
   end
 
@@ -18,6 +19,20 @@ class MinBinaryHeap
     # p root
     # p node
     # 1. Insert a new node at the end of the Heap
+
+    @heapsize += 1
+    current_level = (Math.log2(@heapsize).floor)
+    level_capacity = 2 ** current_level
+    level_midway = level_capacity / 2
+    tree_capacity = 2 ** (current_level + 1) - 1
+    level_position = level_capacity - (tree_capacity - @heapsize)
+    puts @heapsize
+    puts current_level
+    puts level_capacity
+    puts level_midway
+    puts tree_capacity
+    puts level_position
+
       if root.left.nil?
         puts "left of root is nil, inserting node there"
         root.left = node
@@ -26,15 +41,15 @@ class MinBinaryHeap
         puts "right of root is nil, but left of root is not nil, inserting node to root.right"
         root.right = node
         node.parent = root
-      elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
-        puts "root.left's nodes are occupied, inserting node in root.right"
+      elsif level_position > level_midway
+        puts "level position is larger than level midway, inserting node in root.right"
         insert(root.right, node)
-      else
-        puts "inserting node in root.left, it didn't fit anywhere else"
+      elsif level_position <= level_midway
+        puts "level position is lesser or equal to level midway, inserting node in root.left"
         insert(root.left, node)
       end
       puts ""
-      # printf
+      printf
       puts ""
       # 2. Compare the value of the new child node with its parent.
       if node.rating < root.rating
@@ -43,44 +58,9 @@ class MinBinaryHeap
       end
       # 4. Repeat step 2 and 3 until the Heap property holds.
       puts "Finished inserting."
+      printf
       puts ""
   end
-
-  # def swap(root, node)
-  #   # set root title and rating to temp node, which will become new node
-  #   swapped_node = Node.new(root.title, root.rating)
-  #   # set temp node's left and right to new node's left and right
-  #   swapped_node.left = node.left
-  #   swapped_node.right = node.right
-  #
-  #   if root == @root
-  #     @root = node
-  #   end
-  #   # if old root.left = old node
-  #   if root.left == node
-  #     # set new node.left = old root
-  #     node.left = root
-  #     node.right = root.right
-  #     node.parent = root.parent
-  #     # puts "node after left swap:" + node.inspect
-  #     # puts ""
-  #   else
-  #     node.right = root
-  #     node.left = root.left
-  #     node.parent = root.parent
-  #     puts ##
-  #   end
-  #   root.left = swapped_node.left
-  #   root.right = swapped_node.right
-  #   puts "node after full swap: " + node.inspect
-  #   puts "root after full swap: " + root.inspect
-  #   puts ""
-  #
-  #   # if root.parent.nil?
-  #   #   @root = root
-  #   # end
-  #
-  # end
 
   def swap(root, node)
     root_parent = root.parent
