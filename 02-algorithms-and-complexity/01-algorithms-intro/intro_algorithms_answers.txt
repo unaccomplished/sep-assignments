@@ -1,0 +1,43 @@
+Calculating a Tip:
+1. OBTAIN bill from waiter or waitress.
+2. FIND total amount owed for meal on receipt.
+3. DECIDE how good the service and meal was.
+4. IF meal and service was very good, tip percentage should be 20% or higher.
+ELSE IF meal and service was just fine, tip percentage should be 18%.
+ELSE tip percentage should be 15%.
+5. MULTIPLY tip percentage by total amount owed for the meal.
+6. TOTAL is the amount to tip.
+
+Determining what to wear:
+1. DETERMINE what the weather will be like today via a weather app or from the
+news.
+2. CONSIDER whether the weather requires any special clothing.
+IF weather will be wet, make sure to include appropriate waterproof attire.
+ELSE IF weather will be cold, make sure to include appropriate warm attire.
+ELSE IF weather will be warm, make sure to include appropriate cool attire.
+3. DETERMINE if there are any special occasions today via calendar app.
+3. CONSIDER whether any occasions today requires any special clothing.
+IF special event is today, make sure to include appropriate special event attire.
+ELSE IF active event is today, make sure to include appropriate active attire.
+ELSE IF work event is today, make sure to include proper work dress attire.
+ELSE IF leisure event is today, make sure to include leisure attire.
+ELSE there are no special occasion attire considerations.
+4. Go to closet and dresser.
+5. OBTAIN undergarments, tops, bottoms, and shoes that match weather and occasions
+considerations.
+6. WEAR obtained clothes.
+
+Getting to work:
+1. UNLOCK car.
+2. ENTER car.
+3. TURN ON GPS app on mobile device.
+4. INPUT address for work and wait for GPS to give directions.
+5. START car engine.
+6. WHILE following traffic rules and laws,
+DRIVE car by following directions given by GPS,
+UNTIL reached work destination.
+7. STOP car engine.
+8. EXIT car.
+9. LOCK car.
+10. WALK to work entrance.
+11. ENTER work.
