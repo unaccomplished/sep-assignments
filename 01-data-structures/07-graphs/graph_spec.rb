@@ -19,11 +19,12 @@ RSpec.describe Graph, type: Class do
   let(:uma_thurman) { Node.new("Uma Thurman") }
   let(:ben_kingsley) { Node.new("Ben Kingsley") }
   let(:emma_watson) { Node.new("Emma Watson") }
+  let(:dan_stevens) { Node.new("Dan Stevens") }
   let(:john_nobody) { Node.new("John Nobody") }
 
   let (:graph) { Graph.new }
 
-  before(:each) do
+  before do
     kevin_bacon.film_actor_hash["Footloose"] = [lori_singer, john_lithgow, dianne_wiest, chris_penn, sarah_jessica_parker]
     dianne_wiest.film_actor_hash["Footloose"] = [kevin_bacon, lori_singer, john_lithgow, chris_penn, sarah_jessica_parker]
     # dianne_wiest.film_actor_hash["Edward Scissorhands"] = [johnny_depp, winona_ryder]
@@ -36,6 +37,7 @@ RSpec.describe Graph, type: Class do
     ralph_fiennes.film_actor_hash["Schindler's List"] = [liam_neeson, ben_kingsley]
     # ralph_fiennes.film_actor_hash["Harry Potter and the Goblet of Fire"] = [gary_oldman, emma_watson]
     gary_oldman.film_actor_hash["Harry Potter and the Goblet of Fire"] = [ralph_fiennes, emma_watson]
+    emma_watson.film_actor_hash["Harry Potter and the Prisoner of Azkaban"] = [gary_oldman]
   end
 
   describe "#node" do
@@ -75,6 +77,10 @@ RSpec.describe Graph, type: Class do
 
     it "returns an array of 6 movies if there is 6 degrees of connection to Kevin Bacon" do
       expect(graph.find_kevin_bacon(gary_oldman)).to eq ["Harry Potter and the Goblet of Fire", "Schindler's List", "Les Miserables", "Pirates of the Caribbean", "Edward Scissorhands", "Footloose"]
+    end
+
+    it "returns an error message if there is more than 6 degrees of connection to Kevin Bacon" do
+      expect(graph.find_kevin_bacon(emma_watson)).to eq("Emma Watson is not connected to Kevin Bacon within 6 degrees or less.")
     end
   end
 

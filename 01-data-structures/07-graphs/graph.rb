@@ -11,7 +11,6 @@ class Graph
       actors.each do |actor|
         if actor.name == "Kevin Bacon"
           @films_array << film
-          return @films_array
         elsif !@films_array.include?(film)
           @films_array << film
           find_kevin_bacon(actor)
