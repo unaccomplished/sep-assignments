@@ -4,16 +4,17 @@ def heap_sort(collection)
   (collection.length - 1).downto(0) do |i|
     swap(collection, 0, i)
     # swapping root and last nodes, i is last node, 0 is root node
-    p collection
+    # p collection
     heap_down(collection, i, 0)
-    # what is i and what is 0 here?
+    # i is the new last array item in new heap array and 0 the parent node
+    # (beginning of the heap array)
   end
   collection
 end
 
 def build_max_heap(array)
   ((array.length - 1) / 2).downto(0) do |i|
-    # why does this begin with (array.length - 1) / 2?
+    # begin with (array.length - 1) / 2 means faster performance
     heap_down(array, array.length, i)
     # i is the parent node index
   end
@@ -24,20 +25,21 @@ def swap(array, index1, index2)
 end
 
 def heap_down(array, size, i)
-  # in max heap, parent node is always greater than or equal to child nodes
-  # in max heap, i is the parent node index?
-  # in max heap, size is the size of the array
+  # parent node is always greater than or equal to child nodes, if not, there
+  # be a swap later with recursive heap_down to fix this
+  # i is the parent node index
+  # size is the size of the array
   l = (2 * i) + 1
-  # is this left child index?
+  # is this left child index
   r = (2 * i) + 2
-  # is this right child index?
-  p "l is #{l}"
-  p "r is #{r}"
-  p "size is #{size}"
-  p "i is #{i}"
+  # is this right child index
+  # p "l is #{l}"
+  # p "r is #{r}"
+  # p "size is #{size}"
+  # p "i is #{i}"
   if l < size && array[l] >= array[i]
     # if left child index exists (is less than size of array) and
-    # left child value is greater than ?? value
+    # left child value is greater than the parent value
     largest = l
   else
     largest = i
@@ -47,9 +49,11 @@ def heap_down(array, size, i)
     # right child value is greater than largest value
     largest = r
   end
-  p "largest is #{largest}"
+  # p "largest is #{largest}"
   if largest != i
+    # largest is not the parent, so a swap needs to occur
     swap(array, i, largest)
+    # recursive heap_down with the new largest/parent index re-defined
     heap_down(array, size, largest)
   end
 end
