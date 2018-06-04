@@ -1,40 +1,49 @@
 def heap_sort(collection)
-  last_index = collection.length - 1
-  array = collection
+  build_max_heap(collection)
 
-# Build Max Heap
-  (last_index / 2).downto(0) do |i|
-    down_heap(array, i, last_index)
+  (collection.length - 1).downto(0) do |i|
+    swap(collection, 0, i)
+    p collection
+    heap_down(collection, i, 0)
   end
-
-  while last_index > 0
-    # swap
-    array[0], array[last_index] = array[last_index], array[0]
-    last_index -= 1
-    down_heap(array, 0, last_index)
-  end
-  array
+  collection
 end
 
-def down_heap(array, parent, last_index)
-  root = array[parent]
-  p "root is #{root}"
-  p "parent is #{parent}"
-  p "last_index is #{last_index}"
-  while (child = 2 * parent) <= last_index
-    p "child is #{child}"
-    if child < last_index && array[child] < array[child + 1]
-      child += 1
-      p "child is now #{child}"
-    end
-    break if root >= array[child]
-    array[parent] = array[child]
-    parent = child
+def build_max_heap(array)
+  ((array.length - 1) / 2).downto(0) do |i|
+    heap_down(array, array.length, i)
   end
-  array[parent] = root
 end
 
+def swap(array, index1, index2)
+  array[index1], array[index2] = array[index2], array[index1]
+end
+
+def heap_down(array, size, i)
+  l = (2 * i) + 1
+  p "l is #{l}"
+  r = (2 * i) + 2
+  p "r is #{r}"
+  p "size is #{size}"
+  p "i is #{i}"
+  if l < size && array[l] > array[i]
+    largest = l
+  else
+    largest = i
+  end
+  if r < size && array[r] > array[largest]
+    largest = r
+  end
+  p "largest is #{largest}"
+  if largest != i
+    swap(array, i, largest)
+    heap_down(array, size, largest)
+  end
+end
+
+array = [4, 1, 5, 2, 3]
 unsorted_array = [5, 9, 12, 4, 7, 3, 8, 6]
 unsorted_array2 = [500, -20, 34, 55, 102, -42]
-p heap_sort(unsorted_array)
-p heap_sort(unsorted_array2)
+p heap_sort(array)
+# p heap_sort(unsorted_array)
+# p heap_sort(unsorted_array2)
