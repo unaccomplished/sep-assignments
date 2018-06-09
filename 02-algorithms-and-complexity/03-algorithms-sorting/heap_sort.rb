@@ -58,9 +58,9 @@ def heap_down(array, size, i)
   end
 end
 
-array = [4, 1, 5, 2, 3]
-unsorted_array = [5, 9, 12, 4, 7, 3, 8, 6]
-unsorted_array2 = [500, -20, 34, 55, 102, -42]
-p heap_sort(array)
-p heap_sort(unsorted_array)
-p heap_sort(unsorted_array2)
+# array = [4, 1, 5, 2, 3]
+# unsorted_array = [5, 9, 12, 4, 7, 3, 8, 6]
+# unsorted_array2 = [500, -20, 34, 55, 102, -42]
+# p heap_sort(array)
+# p heap_sort(unsorted_array)
+# p heap_sort(unsorted_array2)

@@ -1,0 +1,20 @@
+Benchmark output:
+                    user     system      total        real
+insertion_sort:   0.000000   0.000000   0.000000 (  0.000080)
+selection_sort:   0.000000   0.000000   0.000000 (  0.000207)
+bubble_sort:      0.000000   0.000000   0.000000 (  0.000014)
+merge_sort:       0.000000   0.000000   0.000000 (  0.000235)
+quick_sort:       0.000000   0.000000   0.000000 (  0.000603)
+heap_sort:        0.000000   0.000000   0.000000 (  0.000233)
+bucket_sort:      0.000000   0.000000   0.000000 (  0.000156)
+
+Looking at the bar chart, bubble sort performed the fastest, and quick sort
+performed the slowest. I think quick sort is much slower because it has
+several recursive calls, which likely would slow down the speed of this method.
+In fact, the second and third slowest sorting methods (heap sort and merge sort)
+also have recursive calls. Recursive calls must slow down a sorting method's
+speed, especially if collection array is large in size. It also makes sense
+that bucket sort is nearly twice the speed of insertion sort since insertion
+sort's code is part of the bucket sort code. I am surprised that bubble sort
+performed so well, perhaps looping through arrays and doing swaps makes very
+efficient swapping performance.

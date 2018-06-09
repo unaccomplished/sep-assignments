@@ -15,7 +15,7 @@ def selection_sort(collection)
    collection
  end
 
- unsorted_array = [5, 9, 12, 4, 7, 3, 8, 6]
- unsorted_array2 = [500, -20, 34, 55, 102, -42]
- p selection_sort(unsorted_array)
- p selection_sort(unsorted_array2)
+ # unsorted_array = [5, 9, 12, 4, 7, 3, 8, 6]
+ # unsorted_array2 = [500, -20, 34, 55, 102, -42]
+ # p selection_sort(unsorted_array)
+ # p selection_sort(unsorted_array2)
