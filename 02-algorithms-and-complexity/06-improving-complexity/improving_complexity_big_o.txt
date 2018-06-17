@@ -1,0 +1,10 @@
+Find Big-O of each version:
+
+- code_optimized has two loops for the array to iterate through, so it has Big-O
+of n*n or O(n^2)
+
+- time_complexity has a few recursive calls (let's use 4 calls for example), so
+it has Big-O of 4 log n or O(n log n).
+
+- space_complexity will likely take longer the more arrays there are, so Big-O
+is linear time or O(n).
