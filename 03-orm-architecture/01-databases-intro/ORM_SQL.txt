@@ -1,0 +1,58 @@
+1. remove duplicates in a query response
+ORM pseudo-code:
+users = User.all
+users.email.distinct
+
+SQL statement:
+SELECT DISTINCT email FROM user;
+
+2. filter records using inequalities, pattern matching, ranges, and boolean logic
+ORM pseudo-code:
+comments = Comment.all
+comments.where('id = 1 AND user_id > 2')
+
+SQL statement:
+SELECT * FROM comment WHERE id = 1 AND user_id > 2;
+
+3. sort records in a particular order
+ORM pseudo-code:
+users = User.all
+users.order('full_name')
+
+SQL statement:
+SELECT * FROM user ORDER BY full_name;
+
+4. limit the number of records returned
+ORM pseudo-code:
+posts = Post.all
+posts.limit(3)
+
+SQL statement:
+SELECT * FROM posts LIMIT 3;
+
+5. group records into sections
+ORM pseudo-code:
+posts = Post.all
+posts.group('user_id')
+
+SQL statement:
+SELECT * FROM post GROUP BY user_id;
+
+6. perform calculations using aggregate functions
+ORM pseudo-code:
+posts = Post.all
+posts.count
+
+SQL statement:
+SELECT COUNT(*) FROM post;
+
+7. join tables using cross join, inner join, and outer join
+ORM pseudo-code:
+cross_join = User.joins('post')
+inner_join = User.joins('post').where('user.id = post.user_id')
+outer_join = post.joins('comment').where('post.user_id = comment.user_id')
+
+SQL statement:
+SELECT * FROM user CROSS JOIN post;
+SELECT * FROM user INNER JOIN post on post.user_id = user.id;
+SELECT * FROM post FULL OUTER JOIN comment ON post.user_id = comment.user_id;
